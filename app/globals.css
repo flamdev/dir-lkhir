@@ -1,26 +1,76 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
+
+  /* Charte graphique "Dir Khir" — design moderne indigo & émeraude,
+     fond neutre froid (slate) pour un rendu épuré, sans jaune/doré. */
+  --color-majorelle: #4f46e5;
+  --color-majorelle-dark: #3730a3;
+  --color-gold: #10b981;
+  --color-gold-dark: #047857;
+  --color-teal: #0891b2;
+  --color-teal-dark: #155e75;
+  --color-plum: #7c3aed;
+  --color-plum-dark: #5b21b6;
+  --color-sand-50: #f8fafc;
+  --color-sand-100: #f1f5f9;
+  --color-sand-200: #e2e8f0;
+  --color-clay-200: #e2e8f0;
+  --color-clay-500: #64748b;
+  --color-clay-700: #334155;
+  --color-night: #0f172a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-cairo);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-majorelle: var(--color-majorelle);
+  --color-majorelle-dark: var(--color-majorelle-dark);
+  --color-gold: var(--color-gold);
+  --color-gold-dark: var(--color-gold-dark);
+  --color-teal: var(--color-teal);
+  --color-teal-dark: var(--color-teal-dark);
+  --color-plum: var(--color-plum);
+  --color-plum-dark: var(--color-plum-dark);
+  --color-sand-50: var(--color-sand-50);
+  --color-sand-100: var(--color-sand-100);
+  --color-sand-200: var(--color-sand-200);
+  --color-clay-200: var(--color-clay-200);
+  --color-clay-500: var(--color-clay-500);
+  --color-clay-700: var(--color-clay-700);
+  --color-night: var(--color-night);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Tailwind v4 a retiré le curseur "pointer" par défaut sur les boutons
+   (contrairement à v3). On le rétablit globalement : plus naturel pour
+   l'utilisateur, sans avoir à ajouter `cursor-pointer` sur chaque bouton. */
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
+/* Sélection de texte aux couleurs de la marque */
+::selection {
+  background: var(--color-majorelle);
+  color: white;
+}
+
+/* Bordure "point de broderie" façon passementerie marocaine */
+.border-stitch {
+  border-image: repeating-linear-gradient(
+      90deg,
+      var(--color-gold) 0 6px,
+      transparent 6px 12px
+    )
+    2;
 }
